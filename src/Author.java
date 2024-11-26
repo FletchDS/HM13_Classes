@@ -26,12 +26,15 @@ public class Author {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return Objects.equals(firstName, author.firstName) && Objects.equals(secondName, author.secondName);
     }
 
-    public boolean equals(Author author) {
-        return this.firstName == author.firstName &&
-                this.secondName == author.secondName;
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, secondName);
     }
 }
